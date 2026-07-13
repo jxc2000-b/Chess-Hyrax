@@ -1,0 +1,2269 @@
+/* =========================================================================
+   SESSION PAGE — styles must not overlap with training-*.
+   Palette: black & white base with a light sprinkle of vintage-internet
+   accents (Win95 silver, hyperlink navy, visited-purple).
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   THEME TOKENS
+   ------------------------------------------------------------------------- */
+.main-page {
+  --ink: #000;
+  --paper: #ffffff;
+  --silver: #c0c0c0;
+  --silver-dark: #808080;
+  --silver-light: #dcdcdc;
+  --link: #0000aa;
+  --visited: #551a8b;
+  --success: #006400;
+  --danger: #800000;
+  --radius: 0;
+  --chrome-border: 2px outset var(--silver);
+}
+
+/* -------------------------------------------------------------------------
+   PAGE ROOT & LAYOUT
+   ------------------------------------------------------------------------- */
+.main-page {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--silver);
+  color: var(--ink);
+  font-family: "Times New Roman", Times, serif;
+}
+
+.layout {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 388px;
+  background-color: var(--paper);
+  align-items: stretch;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.privacy-page {
+  min-height: 100svh;
+  padding: 32px;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.privacy-page__home {
+  color: #0000aa;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* -------------------------------------------------------------------------
+   HEADER & LOGO
+   ------------------------------------------------------------------------- */
+.page-headers {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.header-left {
+  justify-self: start;
+}
+
+.header-right {
+  justify-self: end;
+}
+
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.header-auth__user {
+  max-width: 180px;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logo {
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo__image {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+.simplified-view-container {
+  text-align: center;      /* horizontal */
+  display: flex;
+  gap: 12px;
+  justify-content: center; /* horizontal */
+  align-items: center;
+} 
+.simplified-view-title {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  align-self: center;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* -------------------------------------------------------------------------
+   TOGGLE SWITCH — flat B/W with a classic-link blue for the "on" state.
+   ------------------------------------------------------------------------- */
+.toggle-switch {
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+}
+
+.toggle-switch__track {
+  width: 52px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--silver-dark);
+  transition: background 160ms ease;
+}
+
+.toggle-switch__thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  transform: translateX(0);
+  transition: transform 160ms ease;
+}
+
+.toggle-switch--on .toggle-switch__track {
+  background: var(--link);
+}
+
+.toggle-switch--on .toggle-switch__thumb {
+  transform: translateX(22px);
+}
+
+/* -------------------------------------------------------------------------
+   BOARD SHELL & STAGE
+   ------------------------------------------------------------------------- */
+.board-shell {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.board-stage {
+  width: min(calc(100svh - 136px), calc(100vw - 472px));
+  max-width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+
+.training-board {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--silver-light);
+  border: 1px solid var(--silver-dark);
+  border-radius: var(--radius);
+  color: var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+}
+
+/* -------------------------------------------------------------------------
+   CAPSULE CONTROLS (previous / next arrows)
+   ------------------------------------------------------------------------- */
+.capsule-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--paper);
+}
+
+.capsule-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 120ms ease,
+    color 120ms ease,
+    transform 80ms ease;
+}
+
+.capsule-arrow:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.capsule-arrow:active {
+  background: var(--link);
+  color: var(--paper);
+  transform: translateY(1px);
+}
+
+.capsule-arrow--flash-success {
+  background: var(--success);
+  color: var(--paper);
+}
+
+.capsule-arrow--flash-danger {
+  background: var(--danger);
+  color: var(--paper);
+}
+
+.text-button {
+  padding: 8px 12px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 120ms ease,
+    color 120ms ease,
+    transform 80ms ease;
+}
+
+.text-button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.text-button:active {
+  background: var(--link);
+  color: var(--paper);
+  transform: translateY(1px);
+}
+
+/* -------------------------------------------------------------------------
+   SIDEBAR
+   ------------------------------------------------------------------------- */
+.board-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  padding: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--paper);
+  border-left: 1px solid var(--silver);
+}
+
+.sidebar-privacy {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 8px;
+  gap: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.sidebar-privacy__link {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.settings-shell,
+.analysis-shell,
+.stats-shell {
+  flex: 0 0 auto;
+  background: var(--paper);
+}
+
+/* -------------------------------------------------------------------------
+   SETTINGS WINDOW — modes, filter, rate
+   ------------------------------------------------------------------------- */
+
+.settings-list {
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  padding: 12px 14px;
+  list-style: none;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  background: var(--silver);
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.enable-hints-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 14px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--silver);
+}
+
+.hints-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+.horizontal-toggle {
+  flex: 0 0 auto;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+}
+
+.horizontal-toggle:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+}
+
+.horizontal-toggle__track {
+  width: 52px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--silver-dark);
+  transition: background 160ms ease;
+}
+
+.horizontal-toggle__thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  transform: translateX(0);
+  transition: transform 160ms ease;
+}
+
+.horizontal-toggle--on .horizontal-toggle__track,
+.horizontal-toggle[aria-checked="true"] .horizontal-toggle__track {
+  background: var(--link);
+}
+
+.horizontal-toggle--on .horizontal-toggle__thumb,
+.horizontal-toggle[aria-checked="true"] .horizontal-toggle__thumb {
+  transform: translateX(22px);
+}
+
+.modes-shell {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 6px;
+  width: 100%;
+  padding: 16px 12px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--silver);
+  border: none;
+}
+
+.mode-block {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: none;
+}
+
+.vertical-toggle {
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+}
+
+.vertical-toggle__track {
+  width: 30px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--ink);
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 3px;
+  border: 1px solid var(--silver-dark);
+  transition: background 160ms ease;
+}
+
+.vertical-toggle__thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  transform: translateY(0);
+  transition: transform 160ms ease;
+}
+
+.vertical-toggle--on .vertical-toggle__track {
+  background: var(--link);
+}
+
+.vertical-toggle--on .vertical-toggle__thumb {
+  transform: translateY(-22px);
+}
+
+.mode-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.78rem;
+  text-align: center;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+/* Filter dropdown — expands inline, never overlays */
+.filter {
+  width: 100%;
+  background: var(--paper);
+  border-bottom: 1px solid var(--silver);
+}
+
+.filter__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--paper);
+  color: var(--ink);
+  border: none;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.filter__trigger:hover {
+  background: var(--silver-light);
+}
+
+.filter__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter__icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.filter__caret {
+  transition: transform 160ms ease;
+}
+
+.filter__caret--open {
+  transform: rotate(180deg);
+}
+
+.filter__panel {
+  padding: 12px 14px;
+  border-top: 1px dashed var(--silver);
+  background: var(--silver-light);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+}
+
+/* Rate row */
+.rate-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 14px;
+  background: var(--paper);
+}
+
+.rate-label {
+  position: relative;
+  z-index: 1;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.rate-options {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.rate-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Training run row — attempts list + live timer */
+.training-run-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--silver);
+}
+
+.training-attempts {
+  font-family: "Courier New", Courier, monospace;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-height: 32px;
+}
+
+.timer {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  min-width: 5ch;
+  text-align: right;
+}
+
+/* -------------------------------------------------------------------------
+   ANALYSIS WINDOW — engine config dropdown + lines list
+   ------------------------------------------------------------------------- */
+.engine {
+  width: 100%;
+  background: var(--paper);
+  border-bottom: 1px solid var(--silver);
+}
+
+.engine__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--paper);
+  color: var(--ink);
+  border: none;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.engine__trigger:hover {
+  background: var(--silver-light);
+}
+
+.engine__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.engine__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.engine__icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.engine__panel {
+  padding: 10px 14px;
+  border-top: 1px dashed var(--silver);
+  background: var(--silver-light);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+}
+
+.engine__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.engine__row-label {
+  flex: 1;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.engine__step {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.engine__step:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.engine__step:active {
+  background: var(--link);
+  color: var(--paper);
+}
+
+.engine__value {
+  min-width: 5ch;
+  text-align: center;
+  color: var(--ink);
+}
+
+.engine__lines {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px dashed var(--silver);
+}
+
+.engine__line {
+  padding: 4px 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* -------------------------------------------------------------------------
+   STATS WINDOW — graph + streak
+   ------------------------------------------------------------------------- */
+.graph-shell,
+.streak-shell,
+.chess-com-shell {
+  width: 100%;
+  min-height: 80px;
+  padding: 8px 14px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--silver);
+}
+
+.chess-com-shell {
+  min-height: 0;
+  padding: 8px 14px;
+}
+
+/* Performance dual-line graph — accuracy (%) + elo */
+.perf-graph {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.perf-graph__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.perf-graph__title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--silver-dark);
+}
+
+.perf-graph__legend {
+  display: flex;
+  gap: 10px;
+}
+
+.perf-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.perf-legend i {
+  width: 12px;
+  height: 2px;
+  background: currentColor;
+}
+
+.perf-legend--accuracy {
+  color: var(--link);
+}
+
+.perf-legend--elo {
+  color: var(--danger);
+}
+
+.perf-graph__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.perf-graph__grid {
+  stroke: var(--silver);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.perf-graph__axis {
+  stroke: var(--silver-dark);
+  stroke-width: 1;
+}
+
+.perf-line {
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.perf-line--accuracy {
+  stroke: var(--link);
+}
+
+.perf-line--elo {
+  stroke: var(--danger);
+  stroke-dasharray: 4 2;
+}
+
+.perf-area--accuracy {
+  fill: var(--link);
+  fill-opacity: 0.1;
+}
+
+.perf-area--elo {
+  fill: var(--danger);
+  fill-opacity: 0.07;
+}
+
+.perf-dot {
+  stroke: var(--paper);
+  stroke-width: 1;
+}
+
+.perf-dot--accuracy {
+  fill: var(--link);
+}
+
+.perf-dot--elo {
+  fill: var(--danger);
+}
+
+.perf-graph__stats {
+  display: flex;
+  gap: 8px;
+}
+
+.perf-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px 8px;
+  background: var(--silver-light);
+}
+
+/* 2-class so the accent border survives `no-global-border-children`. */
+.perf-graph .perf-stat {
+  border-left: 3px solid var(--silver-dark);
+}
+
+.perf-graph .perf-stat--accuracy {
+  border-left-color: var(--link);
+}
+
+.perf-graph .perf-stat--elo {
+  border-left-color: var(--danger);
+}
+
+.perf-stat__value {
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.perf-stat__label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--silver-dark);
+}
+
+/* Activity calendar heatmap */
+.heatmap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  font-family: "Courier New", Courier, monospace;
+  --heat-cell: 11px;
+  --heat-gap: 2px;
+}
+
+.heatmap__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.heatmap__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--silver-dark);
+}
+
+.heatmap__count {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.heatmap__body {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--heat-gap);
+}
+
+.heatmap__weekdays {
+  display: grid;
+  grid-template-rows: repeat(7, var(--heat-cell));
+  gap: var(--heat-gap);
+  margin-right: 2px;
+}
+
+.heatmap__weekday {
+  width: 1.2ch;
+  height: var(--heat-cell);
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: var(--heat-cell);
+  text-align: center;
+  color: var(--silver-dark);
+}
+
+.heatmap__grid {
+  display: grid;
+  grid-template-rows: repeat(7, var(--heat-cell));
+  grid-auto-flow: column;
+  grid-auto-columns: var(--heat-cell);
+  gap: var(--heat-gap);
+}
+
+.heatmap__cell {
+  width: var(--heat-cell);
+  height: var(--heat-cell);
+}
+
+.heatmap__legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--silver-dark);
+}
+
+.heatmap__legend-cells {
+  display: inline-flex;
+  gap: var(--heat-gap);
+}
+
+/* Cell fills + borders — 2-class so they beat `no-global-border-children`
+   and the global dashed-border default. Ramp uses the theme link blue. */
+.heatmap .heatmap__cell {
+  border: 1px solid var(--silver);
+}
+
+.heatmap .heatmap__cell--l0 {
+  background: var(--paper);
+  border-color: var(--silver);
+}
+
+.heatmap .heatmap__cell--l1 {
+  background: rgba(0, 0, 170, 0.22);
+  border-color: rgba(0, 0, 170, 0.35);
+}
+
+.heatmap .heatmap__cell--l2 {
+  background: rgba(0, 0, 170, 0.45);
+  border-color: rgba(0, 0, 170, 0.55);
+}
+
+.heatmap .heatmap__cell--l3 {
+  background: rgba(0, 0, 170, 0.7);
+  border-color: rgba(0, 0, 170, 0.8);
+}
+
+.heatmap .heatmap__cell--l4 {
+  background: rgba(0, 0, 170, 0.95);
+  border-color: var(--link);
+}
+
+.chess-com-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.chess-com-strip__text {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.chess-com-strip__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  color: var(--link);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.chess-com-strip__link:hover {
+  color: var(--visited);
+}
+
+.chess-com-strip__icon {
+  flex: 0 0 auto;
+}
+
+/* -------------------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 360px;
+  }
+
+  .board-stage {
+    width: min(calc(100svh - 136px), calc(100vw - 440px));
+  }
+}
+
+@media (max-width: 960px) {
+  .main-page {
+    height: auto;
+    min-height: 100svh;
+    overflow-y: auto;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    overflow: visible;
+  }
+
+  .board-stage {
+    width: 100%;
+  }
+
+  .board-shell {
+    margin-inline: 10%;
+    overflow: visible;
+  }
+
+  .board-sidebar {
+    height: auto;
+    overflow-y: visible;
+    border-left: none;
+    border-top: 1px solid var(--silver);
+  }
+}
+
+@media (max-width: 640px) {
+  .board-shell,
+  .board-sidebar {
+    margin-inline: 0;
+    padding: 0;
+  }
+
+  .board-stage {
+    width: 100%;
+  }
+}
+
+.main-page,
+.main-page * {
+  box-sizing: border-box;
+  border: 1px dashed var(--ink);
+}
+
+.main-page .no-global-border,
+.main-page .no-global-border {
+  border: none;
+}
+
+.main-page .no-global-border-children,
+.main-page .no-global-border-children * {
+  border: none;
+}
+
+.main-page .modes-list {
+  border: 1px solid var(--silver-dark);
+}
+
+/* -------------------------------------------------------------------------
+   IMPORT SESSION POPUP
+   ------------------------------------------------------------------------- */
+.import-session-anchor {
+  position: relative;
+  display: inline-flex;
+}
+
+.import-session-popup {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: min(320px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  box-shadow: 4px 4px 0 var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+  color: var(--ink);
+  z-index: 50;
+}
+
+.import-session-popup__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+}
+
+.import-session-popup__title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.import-session-popup__close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--ink);
+  padding: 2px 6px;
+}
+
+.import-session-popup__close:hover {
+  background: var(--silver-light);
+}
+
+.import-session-popup__body {
+  flex: 1 1 auto;
+  min-height: 200px;
+  padding: 16px;
+  overflow-y: auto;
+  background: var(--paper);
+}
+
+.import-session-popup__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.import-session-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.import-session-field__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.import-session-field__label--inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.import-session-field__input {
+  padding: 6px 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+}
+
+.import-session-field__input:focus {
+  outline: none;
+  border-color: var(--link);
+}
+
+.import-session-field input[type="range"] {
+  width: 100%;
+  accent-color: var(--ink);
+  cursor: ew-resize;
+}
+
+.import-session-field input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--ink);
+}
+
+.import-session-field input[type="range"]::-webkit-slider-thumb {
+  margin-top: -5px;
+}
+
+.import-session-field input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: var(--ink);
+}
+
+.import-session-field input[type="range"]::-moz-range-progress {
+  height: 4px;
+  background: var(--ink);
+}
+
+.import-session-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.import-session-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.import-session-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.import-session-checkbox--hard {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.import-session-checkbox--hard input {
+  accent-color: var(--danger);
+}
+
+.import-session-warning {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 0;
+  color: var(--danger);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Keep the reserved height but hide the text when "hard" is unchecked, so the
+   dialog size (and the blur clip-out) stays fixed. */
+.import-session-warning--hidden {
+  visibility: hidden;
+}
+
+/* Status row: card fills the left whitespace, mining animation sits at right.
+   Fixed height keeps the dialog stable as the card content / frames change. */
+.import-status-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  height: 80px;
+  margin-top: 8px;
+}
+
+.import-status-card {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  padding: 10px 12px;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  border-left: 4px solid var(--silver-dark);
+  box-shadow: 3px 3px 0 var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.import-status-card--success {
+  border-left-color: var(--success);
+}
+
+.import-status-card--danger {
+  border-left-color: var(--danger);
+}
+
+.import-status-card--info {
+  border-left-color: var(--link);
+}
+
+.import-status-card__title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.import-status-card--success .import-status-card__title {
+  color: var(--success);
+}
+
+.import-status-card--danger .import-status-card__title {
+  color: var(--danger);
+}
+
+.import-status-card__detail {
+  font-size: 0.74rem;
+  line-height: 1.3;
+  color: var(--silver-dark);
+}
+
+.import-status-anim {
+  flex: 0 0 auto;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.import-session-actions {
+  display: flex;
+  justify-content: flex-start;
+  justify-content: space-between;
+  padding-top: 4px;
+}
+
+.import-session-fetch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 120ms ease,
+    color 120ms ease,
+    transform 80ms ease;
+}
+
+.import-session-fetch:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.import-session-fetch:active {
+  background: var(--link);
+  color: var(--paper);
+  transform: translateY(1px);
+}
+
+.import-session-cup-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.import-session-fetch-more {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--silver-dark);
+  text-decoration: underline;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.import-session-fetch-more--active {
+  color: var(--success);
+  cursor: pointer;
+}
+
+.import-session-fetch-more--active:hover {
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------------------------
+   ANALYSIS WINDOW — import → parse → mine pipeline + live status readout
+   ------------------------------------------------------------------------- */
+.analysis-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.analysis-title {
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* Status lamp — idle (grey), ready (link blue), busy (amber, pulsing). */
+.analysis-lamp {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+
+.analysis-lamp--ready {
+  background: var(--link);
+  border-color: var(--link);
+}
+
+.analysis-lamp--busy {
+  background: #c87b00;
+  border-color: #c87b00;
+  animation: analysis-lamp-pulse 1s ease-in-out infinite;
+}
+
+@keyframes analysis-lamp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(200, 123, 0, 0.5);
+  }
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 3px rgba(200, 123, 0, 0);
+  }
+}
+
+/* Progress bar on top, Import / Parse / Mine markers beneath. */
+.analysis-pipeline {
+  padding: 12px 14px 10px;
+  background: var(--paper);
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Plain themed loading bar — silver well, link-blue fill (mirrors the hint
+   bar in the board rail). Tracks games analyzed during mining. */
+.analysis-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--silver-light);
+  border: 1px solid var(--silver-dark);
+}
+
+.analysis-bar__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--link);
+  transition: width 200ms ease;
+}
+
+.analysis-steps {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.analysis-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+/* Mine sits at the far right, opposite the huddled Import/Parse pair. */
+.analysis-step--push {
+  margin-left: auto;
+}
+
+.analysis-step__label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--silver-dark);
+  transition: color 200ms ease;
+}
+
+/* Completed stage turns green; the in-progress stage is inked black. */
+.analysis-step--done .analysis-step__label {
+  color: var(--success);
+}
+
+.analysis-step--active .analysis-step__label {
+  color: var(--ink);
+}
+
+/* Headline + big metric readout. */
+.analysis-readout {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 14px 14px;
+  background: var(--paper);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.analysis-readout__headline {
+  display: inline-flex;
+  align-items: baseline;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.analysis-readout__metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.analysis-readout__value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--link);
+}
+
+.analysis-readout__unit {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--silver-dark);
+}
+
+/* -------------------------------------------------------------------------
+   BOUNCING ELLIPSIS — inline indicator for transient status text
+   ------------------------------------------------------------------------- */
+.bouncing-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 4px;
+  width: 19px;
+  height: 1lh;
+  vertical-align: -0.08em;
+  border: none;
+}
+
+.bouncing-ellipsis__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateY(1px) scale(0.72);
+  transform-origin: center;
+  animation: bouncing-ellipsis-bounce 900ms cubic-bezier(0.33, 0, 0.2, 1) infinite;
+}
+
+.bouncing-ellipsis__dot:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.bouncing-ellipsis__dot:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+@keyframes bouncing-ellipsis-bounce {
+  0% {
+    transform: translateY(1px) scale(0.72);
+  }
+  35% {
+    transform: translateY(-3px) scale(1);
+  }
+  70%,
+  100% {
+    transform: translateY(1px) scale(0.72);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bouncing-ellipsis__dot {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   SHELL EXTRAS — left rail (prompt + eval slider), board timer, reset btn
+   ------------------------------------------------------------------------- */
+.board-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 0;
+}
+
+.board-left-rail {
+  min-width: 0;
+  max-width: 200px;
+  width: 100%;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0 12px 12px;
+}
+
+.board-stage {
+  justify-self: center;
+}
+
+.board-right-rail {
+  min-width: 0;
+  max-width: 200px;
+  width: 100%;
+  justify-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 12px 12px 0;
+}
+
+@media (max-width: 640px) {
+  .board-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .board-left-rail,
+  .board-right-rail {
+    display: none;
+  }
+
+  .board-stage {
+    justify-self: center;
+  }
+}
+
+.prompt-banner {
+  padding: 12px;
+  max-width: 200px;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  box-shadow: 3px 3px 0 var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.score-card {
+  padding: 12px;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  box-shadow: 3px 3px 0 var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+  color: var(--ink);
+}
+
+.hint-card {
+  margin-top: auto;
+  margin-bottom: 36px;
+  max-width: 200px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  box-shadow: 3px 3px 0 var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+  color: var(--ink);
+}
+
+.hint-card__label {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--silver-dark);
+}
+
+.hint-card__bar {
+  flex: 1 1 auto;
+  min-width: 48px;
+  height: 8px;
+  background: var(--silver-light);
+  border: 1px solid var(--silver-dark);
+}
+
+.hint-card__bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--link);
+  transition: width 120ms linear;
+}
+
+.score-card__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--silver-dark);
+}
+
+.score-card__value {
+  margin-top: 6px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.score-card__meta {
+  margin-top: 8px;
+  font-size: 0.82rem;
+}
+
+
+.board-timer {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  padding: 4px 10px;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  box-shadow: 2px 2px 0 var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.board-timer--blitz {
+  color: var(--danger);
+}
+
+.capsule-arrow--reset {
+  font-size: 1.3rem;
+}
+
+
+/* -------------------------------------------------------------------------
+   TEST SESSION PAGE — demo square-highlight markers
+   ------------------------------------------------------------------------- */
+   
+.demo-marker-square-green {
+  fill: #88ff2d;
+  opacity: 0.5;
+}
+
+.demo-marker-square-red {
+  fill: #ff5724;
+  opacity: 0.5;
+}
+
+.demo-marker-square-important {
+  fill: #6aa7c8;
+  opacity: 0.58;
+}
+
+.demo-marker-threat-0 {
+  fill: #88ff2d;
+  opacity: 0.35;
+}
+
+.demo-marker-threat-1 {
+  fill: #ffd60a;
+  opacity: 0.5;
+}
+
+.demo-marker-threat-2 {
+  fill: #ff9f1c;
+  opacity: 0.55;
+}
+
+.demo-marker-threat-3 {
+  fill: #ff3b30;
+  opacity: 0.6;
+}
+
+.coach-marker-square-important {
+  fill: #6aa7c8;
+  opacity: 0.58;
+}
+
+.board-piece-dimmed,
+.weak-piece-demo-piece-weak {
+  opacity: 0.42;
+}
+
+.cm-chessboard .engine-arrow-best-move .arrow-head {
+  fill: var(--danger);
+  fill-rule: nonzero;
+}
+
+.cm-chessboard .engine-arrow-best-move .arrow-line {
+  stroke: var(--danger);
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+/* -------------------------------------------------------------------------
+   TEST BED — square-control heatmap markers
+   ------------------------------------------------------------------------- */
+.control-marker-square-white-1 {
+  fill: #5f93ff;
+  opacity: 0.2;
+}
+
+.control-marker-square-white-2 {
+  fill: #3d77ef;
+  opacity: 0.34;
+}
+
+.control-marker-square-white-3 {
+  fill: #1f5bd7;
+  opacity: 0.48;
+}
+
+.control-marker-square-black-1 {
+  fill: #f05a3d;
+  opacity: 0.2;
+}
+
+.control-marker-square-black-2 {
+  fill: #d94327;
+  opacity: 0.34;
+}
+
+.control-marker-square-black-3 {
+  fill: #b82f18;
+  opacity: 0.48;
+}
+
+/* -------------------------------------------------------------------------
+   PUZZLE MODE — correct/wrong square highlight markers
+   ------------------------------------------------------------------------- */
+.puzzle-marker-square-correct {
+  fill: #c6cb8a;
+  opacity: 0.55;
+}
+
+.puzzle-marker-square-wrong {
+  fill: #d38d78;
+  opacity: 0.55;
+}
+
+/* -------------------------------------------------------------------------
+   TUTORIAL / SPOTLIGHT — portaled to <body>, so theme tokens are redeclared
+   locally and the global dashed-border rule does not reach here.
+   ------------------------------------------------------------------------- */
+.spotlight-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: auto;
+  transition: clip-path 180ms ease;
+}
+
+/* Full-screen layer that centers the dialog. Transparent to pointer events so
+   clicks outside the card fall through to the spotlight overlay (which closes). */
+.tutorial-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.tutorial-modal__dialog {
+  --ink: #000;
+  --paper: #ffffff;
+  --silver: #c0c0c0;
+  --silver-dark: #808080;
+  --silver-light: #dcdcdc;
+  --link: #0000aa;
+  --visited: #551a8b;
+  --success: #006400;
+  --danger: #800000;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, 90vw);
+  max-height: calc(100vh - 48px);
+  max-height: calc(100svh - 48px);
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px outset var(--silver);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.45);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.tutorial-modal__titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px 6px 12px;
+  background: var(--link);
+  color: var(--paper);
+}
+
+.tutorial-modal__title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.tutorial-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: var(--silver);
+  color: var(--ink);
+  border: 2px outset var(--silver);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tutorial-modal__close:active {
+  border-style: inset;
+}
+
+.tutorial-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tutorial-modal__body p {
+  margin: 0 0 8px;
+}
+
+.tutorial-modal__body p:last-child {
+  margin-bottom: 0;
+}
+
+.tutorial-modal__hint {
+  font-size: 0.78rem;
+  color: var(--silver-dark);
+}
+
+.tutorial-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 12px 16px 14px;
+}
+
+/* -------------------------------------------------------------------------
+   TUTORIAL TOUR — dim spotlight + tooltip. Portaled to <body>, so theme
+   tokens are redeclared locally and the global dashed-border rule does not
+   reach here.
+   ------------------------------------------------------------------------- */
+.tutorial-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: auto;
+}
+
+.tutorial-tip {
+  --ink: #000;
+  --paper: #ffffff;
+  --silver: #c0c0c0;
+  --silver-dark: #808080;
+  --silver-light: #dcdcdc;
+  --link: #0000aa;
+  position: fixed;
+  max-width: calc(100vw - 16px);
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px outset var(--silver);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.45);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.tutorial-tip__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--link);
+  color: var(--paper);
+}
+
+.tutorial-tip__title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.tutorial-tip__count {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.tutorial-tip__body {
+  margin: 0;
+  padding: 12px 12px 8px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.tutorial-tip__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 12px 12px;
+}
+
+.tutorial-tip__nav {
+  display: flex;
+  gap: 8px;
+}
+
+.tutorial-tip__skip {
+  padding: 4px;
+  background: none;
+  border: none;
+  color: var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tutorial-tip__skip:hover {
+  color: var(--ink);
+}
+
+/* -------------------------------------------------------------------------
+   LOGIN — standalone page (LoginPage) + windowed variant (LoginWindow).
+   The page wraps these in `.main-page`; the window reuses the same inner
+   card classes inside the portaled `.tutorial-modal__dialog`.
+   ------------------------------------------------------------------------- */
+
+.login-page {
+  background: var(--paper);
+}
+
+.login-stage {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: var(--silver-light);
+}
+
+.login-card {
+  width: min(360px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+  box-shadow: 4px 4px 0 var(--silver-dark);
+  font-family: "Courier New", Courier, monospace;
+  color: var(--ink);
+}
+
+.login-card__header {
+  padding: 10px 14px;
+  background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+}
+
+.login-card__title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Segmented Sign in / Create account switch. */
+.login-modes {
+  display: flex;
+}
+
+.login-mode {
+  flex: 1 1 0;
+  padding: 9px 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: none;
+  border: 1px dashed black;
+  color: var(--silver-dark);
+  background: var(--silver-light);
+  cursor: pointer;
+}
+
+.login-mode--active {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.login-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 16px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.login-field__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.login-field__input {
+  padding: 6px 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--silver-dark);
+}
+
+.login-field__input:focus {
+  outline: none;
+  border-color: var(--link);
+}
+
+.login-field__input:disabled {
+  opacity: 0.6;
+}
+
+.login-field__select {
+  appearance: none;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 26px;
+}
+
+/* Sign-up-only fields, wrapped so they can reserve their own height in
+   sign-in mode. Matches the form's 14px inter-field gap. */
+.login-extra-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Sign-in mode: keep the fields in the layout (reserved white space) but
+   hide them, so both card variations are the same height. */
+.login-extra-fields--reserved {
+  visibility: hidden;
+}
+
+/* Inline feedback lines. */
+.login-error,
+.login-notice {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  padding: 7px 9px;
+  border: 1px solid var(--silver-dark);
+}
+
+.login-error {
+  color: #7a1d1d;
+  background: #f6e3e3;
+  border-color: #c89a9a;
+}
+
+.login-notice {
+  color: var(--ink);
+  background: var(--silver-light);
+}
+
+.login-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.login-link {
+  font-size: 0.8rem;
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.login-link:visited {
+  color: var(--visited);
+}
+
+.login-card__footer {
+  padding: 8px 14px;
+  background: var(--silver-light);
+  border-top: 1px dashed var(--silver);
+  font-size: 0.75rem;
+  color: var(--silver-dark);
+  text-align: right;
+}

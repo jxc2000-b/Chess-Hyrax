@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 19" aria-hidden="true">
+  <g transform="translate(9 9.5)">
+    <circle r="6.5" fill="none" stroke="rgba(20,20,20,0.18)" stroke-width="2" />
+    <circle r="6.5" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"
+            stroke-dasharray="10 30.85" stroke-dashoffset="0">
+      <animateTransform attributeName="transform" type="rotate"
+                        from="0" to="360" dur="0.85s" repeatCount="indefinite" />
+    </circle>
+  </g>
+</svg>

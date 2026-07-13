@@ -1,0 +1,33 @@
+*.DS_Store
+project/
+quarantine/
+schema/
+stockfish-ts-backend/
+notes.txt
+node_modules/
+*/todo
+.claude
+
+# front
+frontend/scripts/
+frontend/data
+frontend/dist/
+
+# back
+sb-backend/dist
+
+# all env
+*.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+#logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+parseGames.fetch.json
+
+
