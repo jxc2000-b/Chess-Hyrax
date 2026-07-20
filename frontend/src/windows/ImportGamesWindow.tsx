@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
-  DEFAULT_POSITION_FILTERS,
   DEFAULT_TRAINING_RUN_TYPE,
-  type PuzzleTags,
   type SessionData,
   type TrainingRunType,
 } from "../types";
@@ -25,15 +23,11 @@ const TIME_CONTROL_OPTIONS = ["bullet", "blitz", "rapid"] as const;
 type TimeControlOption = (typeof TIME_CONTROL_OPTIONS)[number];
 const TRAINING_RUN_OPTIONS = ["train", "rush"] as const;
 
-function getPositionFiltersForTrainingRun(trainingRunType: TrainingRunType): PuzzleTags[] {
-  return trainingRunType === "rush" ? ["hard"] : [...DEFAULT_POSITION_FILTERS];
-}
-
 function getTrainingRunType(sessionData: SessionData | null): TrainingRunType {
   if (sessionData?.trainingRunType) {
     return sessionData.trainingRunType;
   }
-  return sessionData?.positionFilters?.includes("hard") ? "rush" : DEFAULT_TRAINING_RUN_TYPE;
+  return sessionData?.gamemode === "rush" ? "rush" : DEFAULT_TRAINING_RUN_TYPE;
 }
 
 type Mode = "chesscom" | "lichess";
@@ -116,7 +110,6 @@ function ImportGamesWindow({ open, onClose, sessionData, onSessionDataChange }: 
 
   async function runImport() {
     const selectedTimeControls = (Object.entries(timeControls) as [TimeControlOption, boolean][]).filter(([, enabled]) => enabled).map(([key]) => key);
-    const positionFilters = getPositionFiltersForTrainingRun(trainingRunType);
     setFetchState("loading");
     try {
       const result = isChesscom
@@ -125,8 +118,10 @@ function ImportGamesWindow({ open, onClose, sessionData, onSessionDataChange }: 
       onSessionDataChange({
         ...(sessionData ?? {}),
         isResumeFetch: !result.monthExhausted,
-        positionFilters,
+        // The run type is the mode: train and rush each own their own
+        // (app-set) mining tuning, so no positionFilters are written here.
         trainingRunType,
+        gamemode: trainingRunType,
         pgnStream: result.pgns,
         username,
       });

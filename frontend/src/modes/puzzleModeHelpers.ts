@@ -1,7 +1,7 @@
-// Pure helpers + constants for puzzle mode: move-grading, SAN→square
-// resolution, hint-module selection, and the timing values for the prior-move
-// replay and hint reveal. Kept out of the hook so puzzleMode.ts stays focused
-// on state/effects.
+// Pure helpers + constants for puzzle-style training (train mode today, rush
+// mode as it lands): move-grading, SAN→square resolution, hint-module
+// selection, and the timing values for the prior-move replay and hint reveal.
+// Kept out of the hooks so the mode files stay focused on state/effects.
 
 import { type EngineAnalysis, type ShrunkTrainingPosition } from "../types";
 import { Chess } from "chess.js";

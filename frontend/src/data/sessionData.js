@@ -7,7 +7,7 @@
 
 export const SESSION_DATA = {
   isResumeFetch: false,
-  gamemode: "puzzle",
+  gamemode: "train",
   trainingPositions: [
     {
       id: 'italian-0',

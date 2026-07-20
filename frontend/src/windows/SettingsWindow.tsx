@@ -7,7 +7,7 @@ type SettingsWindowProps = {
   onSessionDataChange: (sessionData: SessionData | null) => void;
 };
 
-const GAME_MODES: GameMode[] = ["puzzle", "analysis"];
+const GAME_MODES: GameMode[] = ["train", "rush"];
 
 const RATE_KEYS = ["a", "b", "c"] as const;
 type RateKey = (typeof RATE_KEYS)[number];

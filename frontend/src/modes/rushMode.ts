@@ -1,6 +1,6 @@
 // Rush mode (scaffold — TBD).
 //
-// Shape mirrors puzzleMode: the hook owns all behavior/state, returns a
+// Shape mirrors trainMode: the hook owns all behavior/state, returns a
 // declarative `view` for the shell plus the `onMoveSubmit` the shell wires to
 // the board. Fill in the TODOs as the mode's rules are decided.
 
@@ -10,7 +10,7 @@ import type { GameModeModule, ModeContext, ModeReturn } from "./types";
 
 function useRushMode(ctx: ModeContext): ModeReturn {
   // Guards async results against landing after navigation, same pattern as
-  // puzzleMode: bump on submit/reset/navigate, compare before applying.
+  // trainMode: bump on submit/reset/navigate, compare before applying.
   const latestRequestRef = useRef(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);

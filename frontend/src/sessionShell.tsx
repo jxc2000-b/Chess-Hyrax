@@ -152,7 +152,7 @@ function SessionShell({ sessionData, onSessionDataChange }: SessionShellProps) {
   // board alive with a looping demo game. Flips off the moment the first puzzle
   // lands (trainingPositions becomes non-empty) or mining finishes empty.
   const isMiningFirstPuzzle =
-    gamemode === "puzzle" &&
+    gamemode === "train" &&
     (sessionData?.pgnStream?.length ?? 0) > 0 &&
     trainingPositions.length === 0 &&
     sessionData?.puzzleMiningCompleted !== true;

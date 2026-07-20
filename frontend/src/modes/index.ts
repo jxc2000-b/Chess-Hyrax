@@ -5,13 +5,11 @@
 import type { GameMode } from "../types";
 import type { GameModeModule } from "./types";
 import { analysisMode } from "./analysisMode";
-import { puzzleMode } from "./puzzleMode";
 import { rushMode } from "./rushMode";
 import { trainMode } from "./trainMode";
 
 export const MODE_REGISTRY: Record<GameMode, GameModeModule> = {
   analysis: analysisMode,
-  puzzle: puzzleMode,
   rush: rushMode,
   train: trainMode,
 };

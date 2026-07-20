@@ -31,10 +31,12 @@ export type PuzzleTags =
   | "user-opponent-mistake"
   | "not-labeled";
 
+// The user-facing choice at import time. Maps 1:1 onto the train/rush game
+// modes — each mode owns its own (app-set) mining tuning; the user no longer
+// picks position filters directly.
 export type TrainingRunType = "train" | "rush";
 
 export const DEFAULT_TRAINING_RUN_TYPE: TrainingRunType = "train";
-export const DEFAULT_POSITION_FILTERS: Extract<PuzzleTags, "easy" | "medium" | "hard">[] = ["easy", "medium"];
 
 export type Inferences = {
   [key: string]: string
@@ -82,16 +84,15 @@ export type ShrunkTrainingPosition = {
 // medium = moves missed by the user
 // hard = moves missed by stockfish depth 10
 
-export type GameMode = "puzzle" | "analysis" | "rush" | "train";
+export type GameMode = "analysis" | "rush" | "train";
 
-export const DEFAULT_GAMEMODE: GameMode = "puzzle";
+export const DEFAULT_GAMEMODE: GameMode = "train";
 
 export type SessionData = {
   isResumeFetch?: boolean;
   gamemode?: GameMode;
   trainingRunType?: TrainingRunType;
   hintsEnabled?: boolean;
-  positionFilters?: PuzzleTags[];
   trainingPositions?: ShrunkTrainingPosition[];
   puzzleMiningCompleted?: boolean;
   // Mining progress: how many games the puzzle miner has analyzed so far, out
