@@ -1,4 +1,4 @@
-import { engineService } from "../Stockfish/engineService";
+import { engineService } from "@hyrax/engine";
 import type { ChessSide, EngineAnalysis, ShrunkTrainingPosition, PuzzleTags } from "../types";
 import { type ParsedGame, getGameUserColor, puzzleTagger, shufflePositions } from "./puzzleMinerHelpers";
 

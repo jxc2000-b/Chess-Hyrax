@@ -9,7 +9,7 @@ import {
   type AnalysisRequest,
   type AnalysisResult,
   type AnalysisLine,
-} from './StockfishWorker';
+} from './stockfishWorker';
 
 type StockfishEngineOptions = {
   engineOptions?: WasmEngineOptions;

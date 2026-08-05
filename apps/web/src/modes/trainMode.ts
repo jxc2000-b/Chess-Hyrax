@@ -17,9 +17,9 @@
 //     via view.disableBoard until the user hits reset.
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { engineService } from "../Stockfish/engineService";
+import { engineService, ENGINE_LOADING_BADGE_DELAY_MS } from "@hyrax/engine";
 import { minePuzzlePositions } from "../analysis/puzzleMiner";
-import { ENGINE_LOADING_BADGE_DELAY_MS, parseUciSquares } from "../sessionHelpers";
+import { parseUciSquares } from "../sessionHelpers";
 import type { PuzzleTags, SessionData, Severity } from "../types";
 import type { HintContext } from "./hints/types";
 import {

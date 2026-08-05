@@ -3,14 +3,14 @@
 // component unmounts so navigation can't cancel work that other consumers
 // (sessionData, future API calls) still want to receive.
 
-import { analyze as runStockfishAnalysis, init as initStockfish } from "./StockfishEngine";
-import { ENGINE_DEPTH_DEFAULT, ENGINE_LOW_PRIORITY_QUEUE_CAP } from "../sessionHelpers";
+import { analyze as runStockfishAnalysis, init as initStockfish } from "./stockfishEngine";
+import { ENGINE_DEPTH_DEFAULT, ENGINE_LOW_PRIORITY_QUEUE_CAP } from "./engine.constants.ts";
 import type {
   EngineAnalysis,
   EngineAnalyzeOptions,
   EnginePriority,
   EngineSubscriptionListener,
-} from "../types";
+} from "./engine.types.ts";
 
 type QueuedJob = {
   id: number;

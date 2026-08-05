@@ -20,6 +20,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@hyrax/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@supabase/supabase-js':
         specifier: ^2.106.2
         version: 2.112.0
@@ -39,6 +42,12 @@ importers:
       '@emnapi/runtime':
         specifier: ^1.10.0
         version: 1.11.3
+      '@hyrax/engine':
+        specifier: workspace:*
+        version: link:../../packages/engine
+      '@hyrax/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@supabase/supabase-js':
         specifier: ^2.106.2
         version: 2.112.0
@@ -73,6 +82,26 @@ importers:
       vitest:
         specifier: ^4.1.1
         version: 4.1.10(@types/node@26.1.2)(vite@8.2.0(@types/node@26.1.2)(esbuild@0.28.1)(tsx@4.23.7))
+
+  packages/engine:
+    dependencies:
+      stockfish:
+        specifier: ^18.0.7
+        version: 18.0.8
+    devDependencies:
+      vite:
+        specifier: ^8.0.2
+        version: 8.2.0(@types/node@26.1.2)(esbuild@0.28.1)(tsx@4.23.7)
+
+  packages/shared:
+    dependencies:
+      '@supabase/supabase-js':
+        specifier: ^2.106.2
+        version: 2.112.0
+    devDependencies:
+      vite:
+        specifier: ^8.0.2
+        version: 8.2.0(@types/node@26.1.2)(esbuild@0.28.1)(tsx@4.23.7)
 
 packages:
 

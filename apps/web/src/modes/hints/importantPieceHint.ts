@@ -1,4 +1,4 @@
-import { engineService } from "../../Stockfish/engineService";
+import { engineService } from "@hyrax/engine";
 import type { HintContext, HintModule } from "./types";
 
 type ImportantPiecePrepared = {

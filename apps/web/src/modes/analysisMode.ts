@@ -11,7 +11,7 @@
 // moves that don't flip the outcome won't get a mistake/blunder badge.
 
 import { useCallback, useRef } from "react";
-import { engineService } from "../Stockfish/engineService";
+import { engineService } from "@hyrax/engine";
 import type { EngineAnalysis, Severity } from "../types";
 import type { GameModeModule, ModeContext, ModeReturn } from "./types";
 

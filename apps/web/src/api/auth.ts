@@ -3,7 +3,7 @@
 // a single error string without try/catch ceremony.
 
 import type { Session } from "@supabase/supabase-js";
-import { supabase, isSupabaseConfigured } from "./supabaseClient";
+import { supabase, isSupabaseConfigured } from "@hyrax/shared";
 import { DEFAULT_USER_PREFERENCES } from "../userPreferencesContext";
 
 export type Platform = "chesscom" | "lichess";

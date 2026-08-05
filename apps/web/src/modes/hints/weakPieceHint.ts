@@ -1,5 +1,5 @@
 import { Chess } from "chess.js";
-import { engineService } from "../../Stockfish/engineService";
+import { engineService } from "@hyrax/engine";
 import type { HintContext, HintModule } from "./types";
 
 const FILES = ["a", "b", "c", "d", "e", "f", "g", "h"];

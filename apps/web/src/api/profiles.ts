@@ -2,7 +2,7 @@
 // RPCs from schema/migrations/0004_functions.sql. RLS guarantees a user only
 // ever touches their own row, so none of these take a user id.
 
-import { supabase } from "./supabaseClient";
+import { supabase } from "@hyrax/shared";
 import type { UserPreferences } from "../userPreferencesContext";
 import type { Platform } from "./auth";
 

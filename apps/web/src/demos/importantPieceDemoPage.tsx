@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { BORDER_TYPE, Chessboard, COLOR, INPUT_EVENT_TYPE } from "cm-chessboard";
 import { MARKER_TYPE, Markers } from "cm-chessboard/src/extensions/markers/Markers.js";
 import { Chess } from "chess.js";
-import { engineService } from "../Stockfish/engineService";
+import { engineService } from "@hyrax/engine";
 import "cm-chessboard/assets/chessboard.css";
 import "cm-chessboard/assets/extensions/markers/markers.css";
 import "../app.css";

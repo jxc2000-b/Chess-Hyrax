@@ -2,7 +2,7 @@
 // via the update RPCs in schema/migrations/0004_functions.sql. Each RPC stamps
 // user_id := auth.uid() server-side, so ownership can't be spoofed from here.
 
-import { supabase } from "./supabaseClient";
+import { supabase } from "@hyrax/shared";
 import { averagePgnElo } from "./apiHelpers";
 import type { Inference, ShrunkTrainingPosition } from "../types";
 

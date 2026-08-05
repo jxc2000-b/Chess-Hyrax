@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@hyrax/shared": "workspace:*",
     "@supabase/supabase-js": "^2.106.2",
     "dotenv": "^16.4.5"
   },
